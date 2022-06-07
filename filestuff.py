@@ -33,6 +33,7 @@ myFile.close()
 #REad the file
 myFile = open("scre.txt", 'r')
 stuff=myFile.readlines()
+stuff.sort(reverse=True)
 myFile.close()
 for line in stuff:
     print(line)
