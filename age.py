@@ -15,3 +15,4 @@ if(age > 50):
 if(age == 50):
     print("you are ...")
     print(int(15/10))
+print("Am i in a big delay?")
