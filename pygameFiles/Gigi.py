@@ -1,4 +1,4 @@
-#Daniel Walker
+#Gigi
 #06/09/2022
 #We are going to be learning how to control objects using keys
 #We will also learn how to use images
@@ -10,10 +10,15 @@
 # K_a                   a key
 # K_s                   s key
 # K_d                   d key
-
-from locale import CHAR_MAX
-import pygame, os, time, random, math
+import  os, time, random, math
+import pygame
 pygame.init()
+
+# print(pygame.font.get_fonts())
+# pygame.time.delay(10000)
+TITLE_FONT = pygame.font.SysFont('comicsans', 40)
+MENU_FONT = pygame.font.SysFont('comicsans', 20)
+
 os.system('cls')
 
 WIDTH = 700#amount of pixels
@@ -58,10 +63,70 @@ insSquare=pygame.Rect(xig,yig,ibox,ibox)
 #bounce
 mountainSquare = pygame.Rect(250, 320, 180, 250)
 
+#Game Code
 speed = 2
-
 run = True
 background = colors.get("grey")
+
+def menu():
+    screen.fill(colors.get("white"))
+    Title = TITLE_FONT.render ("circle", 1, colors.get("pink"))
+    xd = WIDTH//2 - (Title.get_width()//2)
+    screen.blit(Title, (xd, 50))
+    pygame.display.update()
+    pygame.time.delay(2000)
+
+def instruction():
+    #title font
+    screen.fill(colors.get("white"))
+    Title = TITLE_FONT.render("Instructions", 1, colors.get("black"))
+    xd = WIDTH//2 - (Title.get_width()//2)
+    screen.blit(Title, (xd, 50))\
+
+    #Instructions File
+    myFile = open("PygameFiles\instructions.txt", "r")
+    content = myFile.readlines()
+
+    #print instructions
+    yi = 150
+    for line in content:
+        Insctruc = MENU_FONT.render(line[0:-1], 1, colors.get('black'))
+        screen.blit(Insctruc, (40, yi))
+        pygame.display.update()
+        pygame.time.delay(50)
+        yi += 40
+    
+    #creating buttons
+    Button_1 = pygame.Rect(200, 400, 100, 50)
+    Button_2 = pygame.Rect(400, 400, 100, 50)
+    pygame.draw.rect(screen, colors.get("pink"), Button_1)
+    pygame.draw.rect(screen, colors.get("pink"), Button_2)
+
+    #render yes and no
+    text1 = MENU_FONT.render("Yes", 1, colors.get("black"))
+    text2 = MENU_FONT.render("No", 1, colors.get("black"))
+    screen.blit(text1, (225, 410))
+    screen.blit(text2, (425, 410))
+    pygame.display.update()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+                print("you quit")
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mousePos = pygame.mouse.get_pos()
+                mx = mousePos[0]
+                my = mousePos[1]
+                if Button_1.collidepoint(mx, my):
+                    return True
+                if Button_2.collidepoint(mx, my):
+                    return False
+
+#functions
+menu()
+run = instruction()
+
+#main Game
 while run:
     # screen.fill(background)
     pygame.draw.rect(screen, colors.get("white"), mountainSquare)
@@ -72,7 +137,7 @@ while run:
             print("you quit")
         if event.type == pygame.MOUSEBUTTONDOWN:
             mousePos = pygame.mouse.get_pos()
-            print(mousePos)
+            # print(mousePos)
     keys = pygame.key.get_pressed() #allow us to see what key was pressed
 
     

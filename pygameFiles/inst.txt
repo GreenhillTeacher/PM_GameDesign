@@ -1,0 +1,14 @@
+Goal Of The Game: 
+CIRCLE goal: chase square around screen to eat it 
+SQUARE goal: run around screen to avoid being eaten by the circle 
+
+Who is the winner? 
+Square wins IF it catches the square 3 times in 1 minute. 
+Circle wins IF it avoids the square for 1 minute. 
+IF circle catches the square once, it is a rematch 
+
+KEYS: 
+circle= up, down, right, left 
+square= w=up, a=left, s=down, d=right 
+
+GOOD LUCK! 
