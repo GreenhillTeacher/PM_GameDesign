@@ -645,12 +645,12 @@ def draw_Markers():
                 pygame.draw.circle(screen,cirClr,(xValue*WIDTH//3+WIDTH//6,yValue*HEIGHT//3 +HEIGHT//6),WIDTH//6-15, lineWidth)
             yValue +=1
         xValue +=1
-    pygame.display.update() 
+    
 def checkWinner():
     print()
     # add all ROWS if markers[0][]+markers[0][]+markers[0][]==3 Or markers[1][]+markers[1][]+markers[1][]==3 OR
     #winner =1
-    
+
 def gameEnd():
     print()
 zero_Array()
@@ -673,8 +673,6 @@ while Game:
                 markers[cellx][celly]=player
                 player *=-1
                 checkWinner()
-            
-            
             
     pygame.display.update() 
     pygame.time.delay(100)
